@@ -369,6 +369,7 @@ with tab2:
         median = np.median(array_a)
         stdev = std_dev_sample(array_a)
         return 3*(rerata-median)/stdev
+    
     skew_umur = skew(data_umur)
     skew_kuis = skew(data_kuis)
     c1, c2, c3, c4 = st.columns(4)
@@ -403,6 +404,38 @@ with tab2:
     st.header('Soal UTS')
     st.subheader("2021")
     st.markdown("![1_2021](https://github.com/user-attachments/assets/32b11b51-c477-4f87-960e-6360c90d17b8)")
+    tinggi_badan = [147, 148, 148, 149, 152, 154, 154, 154, 155, 155, 
+                    156, 157, 157, 159, 161, 162, 163, 164, 165, 166, 
+                    167, 168, 170, 171, 171, 174, 175, 175, 180, 180, 
+                    188]
+    if st.button("Solution"):
+        st.write("**Solution: **")
+        st.markdown("a. ![solusi_a](https://github.com/user-attachments/assets/d0b8e1b7-72ec-4183-8864-bde97b247621)")
+        tinggi_badan_16 = []
+        for i in tinggi_badan: 
+            if i // 10 == 16: 
+                tinggi_badan_16.append(i)
+
+        def skew_pop(array_a, stdev): 
+            rerata = np.mean(array_a)
+            median = np.median(array_a)
+            return 3*(rerata-median)/stdev
+
+        st.markdown(f"""b. Mean: {np.mean(tinggi_badan_16)},
+                    Median: {np.median(tinggi_badan_16)}, 
+                    Mode: {statistics.mode(tinggi_badan_16)}.  
+                    """)
+        st.markdown("c. ")
+        fig = px.box(tinggi_badan)
+        st.plotly_chart(fig, theme="streamlit")
+        st.markdown(f"""e. \n
+    Mean: {np.mean(tinggi_badan)}, \n
+    Median: {np.median(tinggi_badan)}, \n
+    sigma: {std_dev(tinggi_badan, np.mean(tinggi_badan))}, \n
+    Skewness = 3*(mean - median)/stdev = {skew_pop(tinggi_badan, std_dev(tinggi_badan, np.mean(tinggi_badan)))}\n 
+    Dengan demikian distribusinya adalah positive skew""")
+
+
     st.caption("Credits : Asistensi Hosea")
 with tab3: 
     ppt_url = "https://docs.google.com/presentation/d/1UWww6ieEJ4yhHfkeh7B8EyTaYAUonw6l"
@@ -422,6 +455,32 @@ with tab3:
     st.subheader("2021")
     st.markdown("![uts_2 2021](https://github.com/user-attachments/assets/537aecb0-efac-4fab-a8bd-721c15b1c369)")
     st.caption("Credits : Asistensi Hosea")
+    if st.button("Solution 2"):
+        st.write("a. ")
+        a_2015 = 1.08*116
+        a_2016 = 1.09*a_2015
+        c_2017 = (140-a_2016)/a_2016
+        c_2018 = (148-140)/140
+        c_2019 = (10)/148
+        tabel_lkp = {'tahun' : [2014, 2015, 2016, 2017, 2018, 2019], 
+                    'IHK-2012(100)': [116, a_2015, a_2016, 140, 148, 158], 
+                    'Gaji (Rp juta)': [6, 6.3, 6.5, 6.9, 7.1, 7.4], 
+                    'Inflasi%': [7, 8, 9, round(c_2017*100, 2), round(c_2018*100, 2), round(c_2019*100, 2)]}
+        tabel_lengkap_df = pd.DataFrame.from_dict(tabel_lkp)
+        st.table(tabel_lengkap_df)
+        
+        def geo_mean(iterable):
+            a = np.array(iterable)
+            return a.prod()**(1.0/len(a))
+        st.write(f"b. {round(geo_mean(tabel_lengkap_df['Inflasi%']/100)*100, 2)}%")
+        st.markdown("![2_b](https://github.com/user-attachments/assets/1f761f36-7428-4b52-b2b1-fb05ed448bec)")
+        st.markdown("c. IHK_i / IHK_2017 * Gaji_i")
+        tabel_lengkap_df['gaji_rill_2017'] = tabel_lengkap_df['Gaji (Rp juta)']*(140/tabel_lengkap_df['IHK-2012(100)'])
+        st.table(tabel_lengkap_df)
+        st.write(f"d. Indeks 2018 = 100")
+        st.write("Dilakukan dengan IHK_i / IHK_2018 * 100")
+        tabel_lengkap_df['IHK-2018(100)'] = tabel_lengkap_df["IHK-2012(100)"]/148*100
+        st.table(tabel_lengkap_df)
 
 with tab4: 
     st.header("Probabilitas")
@@ -476,6 +535,9 @@ with tab4:
     st.header("Soal UTS")
     st.subheader("2021")
     st.markdown("![uts_3 2021](https://github.com/user-attachments/assets/62e9b9e5-95f2-40a1-969e-1d67546af3ee)")
+    if st.button("Solusi 3"): 
+        st.write("*Solusi*")
+        st.markdown("![solusi_3_2021](https://github.com/user-attachments/assets/767aa9b5-dc1a-4c39-9d92-f55386fea75a)")
     st.header("Distribusi Probabilitas Diskrit dan Binomial")
     st.markdown("""
 - Random Variabel: kejadian suatu experimen, misal P(X=1) ?
@@ -515,6 +577,15 @@ Distribusi Probabilitas Binomial berbicara tentang probabilitas keberhasilan ata
     st.header("Soal UTS")
     st.subheader('UTS 2021')
     st.markdown("![uts_4 2021](https://github.com/user-attachments/assets/0af8bd4a-7cca-4e99-a992-e5fcc5d26698)")
+    if st.button("Solusi 4"): 
+        st.write("*Solusi*")
+        st.markdown("""a. Metode nya adalah Binomial, hal itu dikarenakan\n
+- Sejumlah y percobaan dilakukan (diskrit fixed number of trials)\n
+- Hanya akan ada 2 kemungkinan (mengenai target -> sukses, dengan tidak kena target -> gagal)\n
+- Independent (Satu percobaan tidak mengenai yang lain)\n
+- Constant : probabilitas nya selalu sama
+                    """)
+        st.markdown("![solusi_4_2021](https://github.com/user-attachments/assets/be46ffd7-1884-4c67-9ee4-19fc32eb78a1)")
     st.subheader('UTS 2023')
     # st.markdown("![uts_4 2021]()")
 
