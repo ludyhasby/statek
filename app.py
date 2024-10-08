@@ -518,4 +518,5 @@ Distribusi Probabilitas Binomial berbicara tentang probabilitas keberhasilan ata
     st.subheader('UTS 2023')
     # st.markdown("![uts_4 2021]()")
 
+    st.header("Dear Maria, dkk. Semangat UTS semoga memuaskan !")
 st.markdown("*Copyright © 2024 Ludy Hasby Aulia*")
