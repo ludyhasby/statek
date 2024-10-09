@@ -588,6 +588,13 @@ Distribusi Probabilitas Binomial berbicara tentang probabilitas keberhasilan ata
         st.markdown("![solusi_4_2021](https://github.com/user-attachments/assets/be46ffd7-1884-4c67-9ee4-19fc32eb78a1)")
     st.subheader('UTS 2023')
     # st.markdown("![uts_4 2021]()")
-
-    st.header("Dear Maria, dkk. Semangat UTS semoga memuaskan !")
+    show_pdf("uts_2023.pdf")
+    with open("uts_2023.pdf", "rb") as file:
+        btn = st.download_button(
+            label="Download UTS (1 page)",
+            data=file,
+            file_name="uts_2023.pdf",
+            mime="application/pdf"
+        )
+    st.header("Semangat UTS semoga memuaskan !")
 st.markdown("*Copyright © 2024 Ludy Hasby Aulia*")
