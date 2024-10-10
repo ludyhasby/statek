@@ -160,7 +160,7 @@ dengan diketahui data 17, 10, 9, 14, 13, 17, 12, 20, 14""")
     # f 
     u_so = st.number_input(label="Coefficient of Variance Population, dalam satuan ya (bukan %)")
     s_so = sigma/rerata
-    st.write(s_so)
+    # st.write(s_so)
     if u_so:
         if np.round(u_so, 1) == np.round(s_so, 1):
             st.write("Jawaban Anda Benar !", s_so)
@@ -474,7 +474,7 @@ with tab3:
             return a.prod()**(1.0/len(a))
         st.write(f"b. {round(geo_mean(tabel_lengkap_df['Inflasi%']/100)*100, 2)}%")
         st.markdown("![2_b](https://github.com/user-attachments/assets/1f761f36-7428-4b52-b2b1-fb05ed448bec)")
-        st.markdown("c. IHK_i / IHK_2017 * Gaji_i")
+        st.markdown("c. Gaji_i * IHK_2017 / IHK_i -> gaji berdasarkan harga 2017 dengan tetap merefleksikan harga tahun i")
         tabel_lengkap_df['gaji_rill_2017'] = tabel_lengkap_df['Gaji (Rp juta)']*(140/tabel_lengkap_df['IHK-2012(100)'])
         st.table(tabel_lengkap_df)
         st.write(f"d. Indeks 2018 = 100")
