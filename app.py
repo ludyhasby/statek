@@ -19,7 +19,8 @@ def pdf_link(pdf_url, link_text="Click here to view PDF"):
 #################
 st.set_page_config(
     page_icon="📊",
-    page_title="Project Mengajar"
+    page_title="Project Mengajar", 
+    layout = "wide"
 )
 st.title("Simulasi Statistika Ekonomi UTS")
 tab1, tab2, tab3, tab4 = st.tabs(["Descriptive Analytics 1", "Descriptive Analytics 2", "Price Index📇", "Probability 🤔"])
