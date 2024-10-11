@@ -23,6 +23,7 @@ st.set_page_config(
     layout = "wide"
 )
 st.title("Simulasi Statistika Ekonomi UTS")
+st.write("Ludy Hasby Aulia - Pengajar Statistika Ekonomi (ludy.hasby@gmail.com | ludy.hasby@ui.ac.id)")
 tab1, tab2, tab3, tab4 = st.tabs(["Descriptive Analytics 1", "Descriptive Analytics 2", "Price Index📇", "Probability 🤔"])
 with tab1: 
     st.header("INTRODUCTION")
